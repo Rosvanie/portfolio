@@ -1,0 +1,452 @@
+:root {
+    /* Couleurs principales */
+    --primary-color: #FF6B35; /* Orange vif */
+    --navbar-bg: #1C1C1C; /* Noir profond */
+    --link-color: #FFFFFF; /* Blanc pur */
+    --hover-color: #FFD23F; /* Jaune lumineux */
+
+
+    /* Couleurs de texte */
+    --main-text-color: #333333; /* Gris anthracite pour la lisibilité */
+    --secondary-text-color: #666666; /* Gris moyen pour les textes secondaires */
+    --background-color: #F9F9F9; /* Blanc cassé pour éviter trop de contraste */
+    
+    /* Typographie */
+    --font-logo: 'Lobster', cursive;
+    --font-links: 'Poppins', sans-serif;
+    --font-size-base: 16px;
+    --font-size-title: 2.5em;
+    --font-size-subtitle: 1.5em;
+    --font-size-text: 1em;
+    --font-size-caption: 0.875em;
+}
+
+
+/* Navbar styling */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-links);
+}
+
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 5%; /* Augmente l'espace latéral */
+    background-color: var(--navbar-bg);
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box; /* S'assure que padding ne dépasse pas */
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo stylisé */
+.navbar-logo a {
+    font-family: var(--font-logo);
+    font-size: 1.8em;
+    color: var(--primary-color);
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+/* Menu de navigation au centre */
+.navbar-menu {
+    list-style-type: none;
+    display: flex;
+    gap: 2em; /* Augmentation de l'espace entre les liens */
+    flex: 1; /* Permet aux liens de prendre l'espace central */
+    justify-content: center;
+    margin: 0; /* Supprime tout écart additionnel */
+}
+
+
+.navbar-menu a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+    color: var(--hover-color)
+}
+
+
+
+/* Bouton de téléchargement */
+.navbar-download .download-btn {
+    padding: 0.5em 1.2em;
+    color: var(--link-color);
+    background-color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-download .download-btn:hover {
+    background-color: var(--hover-color);
+}
+
+
+/* Hamburger icon */
+.hamburger {
+    display: none; /* Masquer par défaut */
+    flex-direction: column;
+    cursor: pointer;
+    z-index: 1001; /* Au-dessus de la navbar */
+}
+
+.hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: var(--primary-color);
+    margin: 3px 0; /* Espace entre les barres */
+    transition: all 0.3s ease; /* Animation de transition */
+}
+
+/* Styles de la navbar */
+@media (max-width: 980px) {
+    .navbar {
+        justify-content: space-between; /* Espace entre le logo et le hamburger */
+        padding: 1em; /* Réduire le padding */
+    }
+
+    .navbar-download {
+        flex: 1; /* Prend de l'espace */
+        display: flex;
+        justify-content: center; /* Centrer le bouton */
+        margin: 0; /* Pas de marge */
+    }
+
+    .navbar-menu {
+        display: none; /* Masquer le menu par défaut */
+        position: absolute; /* Positionnement absolu */
+        top: 0;
+        left: 0;
+        width: 100%; /* Prendre toute la largeur */
+        height: 100vh; /* Prendre toute la hauteur de l'écran */
+        background-color: rgba(0, 0, 0, 0.8); /* Fond légèrement transparent */
+        flex-direction: column; /* Alignement vertical pour le menu */
+        align-items: center; /* Centrer les éléments */
+        justify-content: center; /* Centrer les éléments */
+        z-index: 1000; /* Au-dessus de tout */
+        transition: opacity 0.5s ease, visibility 0.5s ease; /* Animation douce */
+        visibility: hidden; /* Masquer le menu par défaut */
+        opacity: 0; /* Transparence par défaut */
+    }
+
+    .navbar-menu.active {
+        display: flex; /* Affiche le menu quand actif */
+        visibility: visible; /* Rendre visible */
+        opacity: 1; /* Opacité pleine */
+    }
+
+    .navbar-menu ul {
+        list-style-type: none;
+        padding: 0; /* Supprime le padding */
+        width: 100%; /* Prendre toute la largeur */
+    }
+
+    .navbar-menu ul li {
+        margin: 20px 0; /* Espacement entre les éléments */
+    }
+
+    .navbar-menu ul li a {
+        font-size: 2em; /* Taille de police pour mobile */
+        color: var(--link-color);
+        text-decoration: none;
+        text-align: center; /* Centrer le texte */
+    }
+
+    .hamburger {
+        display: flex; /* Afficher sur mobile */
+    }
+}
+
+/* Animation pour l'icône hamburger */
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px); /* Première barre devient la partie supérieure */
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0; /* Cache la barre du milieu */
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px); /* Troisième barre devient la partie inférieure */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Section Home */
+.home-section {
+    position: relative;
+    display: flex;
+    align-items: flex-end; /* Alignement du contenu vers le bas */
+    justify-content: center;
+    height: 100vh; /* Remplit toute la hauteur de l'écran */
+    background-color: var(--navbar-bg);
+    color: var(--link-color);
+    overflow: hidden; /* Évite le débordement */
+}
+
+#slogan{
+    display: none;
+}
+
+/* Grand Cercle de fond */
+.circle-bg {
+    position: absolute;
+    width: 50vw; /* Prend 60% de la largeur de l'écran */
+    height: 50vw; /* Prend 60% de la hauteur de l'écran */
+    max-height: 100vh; /* Max hauteur de 60% de la hauteur de l'écran */
+    background-color: var(--primary-color);
+    border-radius: 50%; /* Cercle complet */
+    top: 50%; /* Centrer verticalement */
+    left: 50%; /* Centrer horizontalement */
+    transform: translate(-50%, -50%); /* Centrer complètement */
+    z-index: 1; /* Au fond */
+}
+
+
+/* Image devant le cercle */
+.image-container {
+    position: absolute; /* Positionnement absolu */
+    bottom: 0; /* Coller l'image au bas de la section */
+    left: 50%; /* Centrer horizontalement */
+    transform: translate(-50%, 0); /* Ajustement centré */
+    z-index: 3; /* Au-dessus de tout */
+}
+
+.image-container img {
+    width: 100%; /* Ajustez la taille selon vos préférences */
+    height: auto;
+    max-width: 500px; /* Taille maximale pour l'image */
+}
+
+
+/* Ajustements responsifs */
+@media(max-width:820px){
+    .image-container img{
+        width: 500px;
+    }
+}
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+
+    .image-container {
+        bottom: -20%; /* Ajustez selon le placement sur mobile */
+        width: 100%; /* Taille réduite pour mobile */
+    }
+}
+
+
+
+
+
+
+
+/* Section principale */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Aligne verticalement */
+    height: 100%; /* Hauteur complète de la section */
+    position: relative; /* Pour un positionnement absolu des enfants */
+    z-index: 2;
+    gap: 150px;
+}
+
+/* Styles de texte à gauche et à droite */
+.text-left, .text-right {
+    flex: 1; /* Prend une part égale de l'espace */
+    display: flex;
+    justify-content: center; /* Centre le contenu dans le cercle */
+    align-items: center; /* Centre le contenu verticalement */
+   
+}
+
+.circle {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Dégradé de couleurs */
+    border-radius: 50%; /* Cercle complet */
+    padding: 40px; /* Espace à l'intérieur du cercle */
+    text-align: center; /* Centre le texte */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre portée pour un effet de profondeur */
+}
+
+.circle h2 {
+    font-size: 2em; /* Taille du titre */
+    margin-bottom: 0.5em; /* Espacement sous le titre */
+    font-weight: bold; /* Texte en gras */
+    text-transform: uppercase; /* Met en majuscules */
+    color: var(--hover-color); /* Couleur du texte */
+
+
+}
+
+
+.circle p {
+    font-size: 1.2em; /* Taille du texte descriptif */
+    line-height: 1.5; /* Hauteur de ligne pour la lisibilité */
+    color: var(--link-color); /* Couleur du texte */
+
+}
+
+.text-left .circle p{
+    margin-right: 50px;
+}
+.text-right .circle p{
+    margin-right: 50px;
+}
+
+
+/* Ajustements responsifs pour le texte */
+
+@media(max-width:862px){
+    .circle p{
+        display: none;
+    }
+}
+/* Pour les écrans de 768px et moins */
+@media (max-width: 768px) {
+    .content-container{
+        display: none;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+/* Section pour les liens des réseaux sociaux */
+.social-links {
+    position: absolute; /* Positionnement absolu */
+    bottom: 0; /* Coller au bas de la section */
+    left: 0; /* Aligner à gauche */
+    width: 100%; /* Prend toute la largeur de l'écran */
+    height: 10%; /* Prend 20% de la hauteur de la section */
+    background-color: var(--navbar-bg); /* Fond noir pour masquer imperfections */
+    display: flex; /* Flexbox pour l'alignement horizontal */
+    justify-content: center; /* Centrer les icônes horizontalement */
+    align-items: center; /* Centrer verticalement */
+    z-index: 10000; /* Doit être au-dessus de tout */
+}
+
+.social-icon {
+    color: var(--link-color); /* Couleur des icônes */
+    font-size: 1.5em; /* Taille des icônes */
+    margin: 0 1em; /* Espace entre les icônes */
+    transition: transform 0.3s; /* Animation pour l'effet hover */
+}
+
+.social-icon:hover {
+    transform: scale(1.1); /* Agrandir l'icône au survol */
+    color: var(--hover-color);
+    zoom: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Style général de la section À propos */
+.about-section {
+    background-color: var(--background-color);
+    color: var(--main-text-color);
+    font-family: var(--font-links);
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Titres */
+.about-title {
+    font-family: var(--font-logo);
+    font-size: var(--font-size-title);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.about-subtitle {
+    font-family: var(--font-links);
+    font-size: var(--font-size-subtitle);
+    color: var(--secondary-text-color);
+    margin-top: 0;
+}
+
+/* Texte principal */
+.about-text {
+    font-size: var(--font-size-text);
+    color: var(--main-text-color);
+    line-height: 1.6;
+    margin: 1rem 0;
+}
+
+/* Boutons d’appel à l’action */
+.button-about {
+    background-color: var(--primary-color);
+    color: var(--link-color);
+    font-family: var(--font-links);
+    font-size: var(--font-size-text);
+    padding: 0.75rem 1.5rem;
+    margin-top: 2rem;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.button-about:hover {
+    background-color: var(--hover-color);
+    color: var(--navbar-bg);
+}
+
+/* Liens sociaux */
+.social-links a {
+    color: var(--link-color);
+    margin: 0 0.5rem;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--hover-color);
+}
