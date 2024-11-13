@@ -54,27 +54,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//A PROPOS
-
-document.addEventListener("DOMContentLoaded", function() {
-    // Sélectionner les éléments
-    const tabs = document.querySelectorAll('.about-tab');
-    const contents = document.querySelectorAll('.about-content');
-    
-    // Ajouter un événement de clic sur chaque onglet
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            // Désactiver tous les onglets
-            tabs.forEach(t => t.classList.remove('active'));
-            contents.forEach(content => content.classList.remove('active'));
-            
-            // Activer l'onglet et son contenu correspondant
-            tab.classList.add('active');
-            document.querySelector(`#${tab.dataset.target}`).classList.add('active');
-        });
-    });
-
-    // Activer l'onglet "Qui suis-je?" par défaut
-    tabs[0].classList.add('active');
-    contents[0].classList.add('active');
-});
